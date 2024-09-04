@@ -13,7 +13,7 @@ router.post("/text", async (req, res) => {
         console.log("text", text);
         console.log("activeChatId", activeChatId);
 
-        const model = genAI.getGenerativeModel({ model: "gemini-1.5-pro" });
+        const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
         const chat = model.startChat({
             history: [
                 {
@@ -73,7 +73,7 @@ router.post("/code", async (req, res) => {
     try {
         const { text, activeChatId } = req.body;
 
-        const model = genAI.getGenerativeModel({ model: "gemini-1.5-pro" });
+        const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
         const chat = model.startChat({
             history: [
                 {
