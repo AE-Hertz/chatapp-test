@@ -6,7 +6,7 @@ const convertToIST = (date) => {
     const offset = 5.5 * 60;
     const utcDate = new Date(date);
     const istDate = new Date(utcDate.getTime() + offset * 60 * 1000);
-    return istDate.toISOString().replace("T", " ").replace("Z", "+05:30");
+    return istDate.toISOString().replace("T", " ").replace("Z", "+00:00");
 };
 
 const StandardMessageForm = ({ props, activeChat }) => {

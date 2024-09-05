@@ -1,13 +1,13 @@
+import { usePostAiAssistMutation } from "@/state/api";
 import React, { useEffect, useState } from "react";
 import MessageFormUI from "./MessageFormUI";
-import { usePostAiAssistMutation } from "../../state/api";
 
 function useDebounce(value, delay) {
-    const [debounceValue, setDebounceValue] = useState(value);
+    const [debouncedValue, setDebouncedValue] = useState(value);
 
     useEffect(() => {
         const handler = setTimeout(() => {
-            setDebounceValue(value);
+            setDebouncedValue(value);
         }, delay);
 
         return () => {
@@ -15,7 +15,7 @@ function useDebounce(value, delay) {
         };
     }, [value, delay]);
 
-    return debounceValue;
+    return debouncedValue;
 }
 
 const AiAssist = ({ props, activeChat }) => {
@@ -25,6 +25,7 @@ const AiAssist = ({ props, activeChat }) => {
     const [appendText, setAppendText] = useState("");
 
     const handleChange = (e) => setMessage(e.target.value);
+
     const handleSubmit = async () => {
         const date = new Date()
             .toISOString()
@@ -46,23 +47,26 @@ const AiAssist = ({ props, activeChat }) => {
         setAttachment("");
     };
 
-    const debounceValue = useDebounce(message, 1000);
+    const debouncedValue = useDebounce(message, 1000);
 
     useEffect(() => {
-        if (debounceValue) {
-            const form = { this: message };
+        if (debouncedValue) {
+            const form = { text: message };
             triggerAssist(form);
         }
-    }, [debounceValue]);
+    }, [debouncedValue]);
 
     const handleKeyDown = (e) => {
-        //handle tab and enter
-        if (e.keyCode === 9 || e.keyCode === 13) {
+        if (e.key === 'Tab') {
             e.preventDefault();
-            setMessage(`${message} ${appendText}`);
+            if (appendText) {
+                setMessage(`${message} ${appendText}`);
+                setAppendText("");
+            }
         }
-        setAppendText("");
     };
+    
+    
 
     useEffect(() => {
         if (resultAssist.data?.text) {

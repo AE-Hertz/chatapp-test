@@ -12,14 +12,18 @@ const MessageFormUI = ({
     handleChange,
     handleSubmit,
     appendText,
+    handleKeyDown,
 }) => {
     const [preview, setPreview] = useState("");
 
-    const handleKeyDown = (event) => {
+    const customHandleKeyDown = (event) => {
         if (event.key === "Enter") {
             event.preventDefault();
             setPreview(""); 
-            handleSubmit(); 
+            handleSubmit();
+        } else if (event.key === "Tab") {
+            event.preventDefault();
+            handleKeyDown(event); 
         }
     };
 
@@ -32,7 +36,7 @@ const MessageFormUI = ({
                         className="message-form-preview-image"
                         src={preview}
                         onLoad={() => URL.revokeObjectURL(preview)}
-                    ></img>
+                    />
                     <XMarkIcon
                         className="message-form-icon-x"
                         onClick={() => {
@@ -49,11 +53,16 @@ const MessageFormUI = ({
                         type="text"
                         value={message}
                         onChange={handleChange}
-                        onKeyDown={handleKeyDown} 
+                        onKeyDown={customHandleKeyDown} // Use customHandleKeyDown to handle both "Tab" and "Enter"
                         placeholder="Send a message..."
                     />
                     {appendText && (
-                        <input className="message-form-assist" type="text" disabled="disabled" value={`${message} ${appendText}`} />
+                        <input
+                            className="message-form-assist"
+                            type="text"
+                            disabled="disabled"
+                            value={`${message} ${appendText}`}
+                        />
                     )}
                 </div>
                 <div className="message-form-icons">
@@ -68,7 +77,7 @@ const MessageFormUI = ({
                     >
                         {({ getRootProps, getInputProps, open }) => (
                             <div {...getRootProps()}>
-                                <input {...getInputProps()}></input>
+                                <input {...getInputProps()} />
                                 <PaperClipIcon
                                     className="message-form-icon-clip"
                                     onClick={open}
@@ -76,7 +85,7 @@ const MessageFormUI = ({
                             </div>
                         )}
                     </Dropzone>
-                    <hr className="vertical-line"></hr>
+                    <hr className="vertical-line" />
                     <PaperAirplaneIcon
                         className="message-form-icon-airplane"
                         onClick={() => {
