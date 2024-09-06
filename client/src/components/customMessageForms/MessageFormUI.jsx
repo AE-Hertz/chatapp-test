@@ -53,7 +53,7 @@ const MessageFormUI = ({
                         type="text"
                         value={message}
                         onChange={handleChange}
-                        onKeyDown={customHandleKeyDown} // Use customHandleKeyDown to handle both "Tab" and "Enter"
+                        onKeyDown={customHandleKeyDown}
                         placeholder="Send a message..."
                     />
                     {appendText && (
