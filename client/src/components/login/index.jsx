@@ -5,14 +5,20 @@ const Login = ({ setUser, setSecret }) => {
     const [isRegister, setIsRegister] = useState(false);
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [loading, setLoading] = useState(false);
     const [triggerLogin, resultLogin] = usePostLoginMutation();
     const [triggerSignUp] = usePostSignUpMutation();
 
-    const handleLogin = () => {
-        triggerLogin({ username, password });
+    const handleLogin = async () => {
+        setLoading(true);
+        await triggerLogin({ username, password });
+        setLoading(false);
     };
-    const handleRegister = () => {
-        triggerSignUp({ username, password });
+
+    const handleRegister = async () => {
+        setLoading(true);
+        await triggerSignUp({ username, password });
+        setLoading(false);
     };
 
     useEffect(() => {
@@ -22,8 +28,18 @@ const Login = ({ setUser, setSecret }) => {
         }
     }, [resultLogin.data]);
 
+    useEffect(() => {
+        const spinner = document.getElementById("cover-spin");
+        if (loading) {
+            spinner.style.display = "block";
+        } else {
+            spinner.style.display = "none";
+        }
+    }, [loading]);
+
     return (
         <div className="login-page">
+            <div id="cover-spin"></div>
             <div className="login-container">
                 <h2 className="title">Chat App</h2>
                 <p

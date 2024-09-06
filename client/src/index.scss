@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;700&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Righteous&display=swap");
 
 $gray-300: #d4d4d4;
 $gray-400: #b1b1b1;
@@ -15,11 +15,23 @@ $tertiary-50: #fffbea;
 $tertiary-100: #fff4d1;
 $quaternary-500: #f48c00;
 
-$messege-our-body: linear-gradient(90deg, hsla(211, 96%, 62%, 1) 0%, hsla(295, 94%, 76%, 1) 100%);
-$messege-their-body: linear-gradient(90deg, hsla(228, 17%, 53%, 1) 0%, hsla(229, 28%, 88%, 1) 100%);
-$messege-body: radial-gradient(circle, rgb(36, 57, 75) 0%, hsla(205, 46%, 10%, 1) 81%);
-$active-messege-body:linear-gradient(to right, #ff0099, #493240);
-$messege-body-hover: linear-gradient(to left, #3e5151, #decba4);;
+$messege-our-body: linear-gradient(
+    90deg,
+    hsla(211, 96%, 62%, 1) 0%,
+    hsla(295, 94%, 76%, 1) 100%
+);
+$messege-their-body: linear-gradient(
+    90deg,
+    hsla(228, 17%, 53%, 1) 0%,
+    hsla(229, 28%, 88%, 1) 100%
+);
+$messege-body: radial-gradient(
+    circle,
+    rgb(36, 57, 75) 0%,
+    hsla(205, 46%, 10%, 1) 81%
+);
+$active-messege-body: linear-gradient(to right, #ff0099, #493240);
+$messege-body-hover: linear-gradient(to left, #3e5151, #decba4);
 
 html,
 body,
@@ -54,7 +66,15 @@ body,
     height: 15px !important;
 }
 
-$gradient-radial: radial-gradient(#70012bff, #5d0124ff, #4b011dff, #380116ff, #25000eff, #130007ff, #000000ff);
+$gradient-radial: radial-gradient(
+    #70012bff,
+    #5d0124ff,
+    #4b011dff,
+    #380116ff,
+    #25000eff,
+    #130007ff,
+    #000000ff
+);
 
 .login-page {
     background: $gradient-radial;
@@ -85,8 +105,8 @@ $gradient-radial: radial-gradient(#70012bff, #5d0124ff, #4b011dff, #380116ff, #2
     font-weight: 400;
     font-style: normal;
 
-    .title{
-        font-size:2.5rem;
+    .title {
+        font-size: 2.5rem;
         margin: 0px;
     }
 }
@@ -96,27 +116,36 @@ $gradient-radial: radial-gradient(#70012bff, #5d0124ff, #4b011dff, #380116ff, #2
     justify-content: flex-end;
     align-items: center;
 }
-.button{
+.button {
     display: inline-block;
-    
-outline: none;
-cursor: pointer;
-font-size: 16px;
-line-height: 20px;
-font-weight: 600;
-border-radius: 3px;
-padding: 6px 20px;
-border: none;
-transition: box-shadow 0.2s ease 0s, -ms-transform 0.1s ease 0s, -webkit-transform 0.1s ease 0s, transform 0.1s ease 0s;
-background: linear-gradient(to right, rgba(230, 30, 77, 0.466) 0%, rgb(160, 26, 70) 50%, rgb(215, 4, 102) 100%);
-color: #fff;
 
-&:hover{
-    background: linear-gradient(to bottom, rgba(230, 30, 77, 0.466) 0%, rgb(160, 26, 70) 50%, rgb(215, 4, 102) 100%);
+    outline: none;
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 600;
+    border-radius: 3px;
+    padding: 6px 20px;
+    border: none;
+    transition: box-shadow 0.2s ease 0s, -ms-transform 0.1s ease 0s,
+        -webkit-transform 0.1s ease 0s, transform 0.1s ease 0s;
+    background: linear-gradient(
+        to right,
+        rgba(230, 30, 77, 0.466) 0%,
+        rgb(160, 26, 70) 50%,
+        rgb(215, 4, 102) 100%
+    );
+    color: #fff;
+
+    &:hover {
+        background: linear-gradient(
+            to bottom,
+            rgba(230, 30, 77, 0.466) 0%,
+            rgb(160, 26, 70) 50%,
+            rgb(215, 4, 102) 100%
+        );
+    }
 }
-}
-
-
 
 .login-input {
     box-sizing: border-box;
@@ -135,11 +164,57 @@ color: #fff;
     text-decoration: underline;
     color: rgb(216, 98, 98);
 
-    &:hover{
+    &:hover {
         color: rgb(138, 42, 42);
         text-decoration: underline;
         cursor: pointer;
     }
+}
+#cover-spin {
+    position: fixed;
+    width: 100%;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: rgba(29, 29, 29, 0.507);
+    z-index: 9999;
+    display: none;
+}
+
+@-webkit-keyframes spin {
+    from {
+        -webkit-transform: rotate(0deg);
+    }
+    to {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+#cover-spin::after {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 48%;
+    top: 40%;
+    width: 40px;
+    height: 40px;
+    border-style: solid;
+    border-color: rgba(255, 255, 255, 0.589);
+    border-top-color: transparent;
+    border-width: 4px;
+    border-radius: 50%;
+    -webkit-animation: spin 0.8s linear infinite;
+    animation: spin 0.8s linear infinite;
 }
 
 /* Chat Styling */
@@ -336,7 +411,7 @@ color: #fff;
     transition: background-color 0.3s ease;
 
     &:hover {
-        background: $messege-body-hover !important;  
+        background: $messege-body-hover !important;
     }
 }
 
@@ -589,7 +664,7 @@ color: #fff;
     color: $secondary-500 !important;
     border: 1px solid $primary-400 !important;
 
-    &:hover{
+    &:hover {
         background-color: rgba(255, 0, 0, 0.863) !important;
         color: white !important;
     }
