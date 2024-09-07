@@ -369,7 +369,7 @@ $gradient-radial: radial-gradient(
 
 /* CHAT LIST */
 .ce-chat-list {
-    overflow-y: hidden !important;
+    overflow-y: scroll !important;
 }
 
 .header-text {
