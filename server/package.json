@@ -1,7 +1,7 @@
 {
   "name": "server",
   "version": "1.0.0",
-  "description": "Backend for the chat app",
+  "description": "Backend for the Trinity",
   "main": "index.js",
   "type": "module",
   "scripts": {

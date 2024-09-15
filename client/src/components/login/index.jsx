@@ -41,7 +41,7 @@ const Login = ({ setUser, setSecret }) => {
         <div className="login-page">
             <div id="cover-spin"></div>
             <div className="login-container">
-                <h2 className="title">Chat App</h2>
+                <h2 className="title">Trinity</h2>
                 <p
                     className="register-change"
                     onClick={() => setIsRegister(!isRegister)}

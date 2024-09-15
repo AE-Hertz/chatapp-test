@@ -370,6 +370,11 @@ $gradient-radial: radial-gradient(
 /* CHAT LIST */
 .ce-chat-list {
     overflow-y: scroll !important;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+.ce-chat-list::-webkit-scrollbar {
+    display: none;
 }
 
 .header-text {
@@ -507,10 +512,16 @@ $gradient-radial: radial-gradient(
     background: $messege-body !important;
     height: calc((100% - 100px) - 68px) !important;
     border-bottom: 1px solid $primary-400 !important;
+    overflow-y: scroll !important;
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
 }
+
 .ce-message-list::-webkit-scrollbar {
     width: 0px;
+    display: none;
 }
+
 .ce-message-list::-webkit-scrollbar-track {
     background: $primary-800;
 }
