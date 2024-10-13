@@ -77,11 +77,12 @@ $gradient-radial: radial-gradient(
 );
 
 .login-page {
-    background: $gradient-radial;
+    background: black;
     background-size: 150% 150%;
     animation: gradient-animation 60s ease infinite;
     height: 100%;
     width: 100%;
+    
     display: flex;
     justify-content: center;
     align-items: center;
@@ -104,7 +105,7 @@ $gradient-radial: radial-gradient(
     font-family: "Righteous", sans-serif;
     font-weight: 400;
     font-style: normal;
-
+    width: 20%;
     .title {
         font-size: 2.5rem;
         margin: 0px;
@@ -131,21 +132,96 @@ $gradient-radial: radial-gradient(
         -webkit-transform 0.1s ease 0s, transform 0.1s ease 0s;
     background: linear-gradient(
         to right,
-        rgba(230, 30, 77, 0.466) 0%,
-        rgb(160, 26, 70) 50%,
-        rgb(215, 4, 102) 100%
+        rgba(146, 255, 21, 0.466) 0%,
+        rgb(78, 176, 12) 50%,
+        rgb(135, 234, 6) 100%
     );
     color: #fff;
 
     &:hover {
         background: linear-gradient(
             to bottom,
-            rgba(230, 30, 77, 0.466) 0%,
-            rgb(160, 26, 70) 50%,
-            rgb(215, 4, 102) 100%
+            rgb(135, 234, 6) 0%,
+            rgb(78, 176, 12) 50%,
+            rgba(146, 255, 21, 0.466) 100%,
+            100%
         );
     }
 }
+
+
+
+// Code injected by SID 
+
+
+// Login/signup Validation Error Css
+.error{
+color: rgba(255, 53, 53, 0.923);
+padding: 0;
+margin: 0;
+font-size: 12px;
+}
+
+
+
+// Toast CSS
+.toast {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 15px;
+    background-color: #333;
+    color: white;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    animation: fadeInOut 0.5s ease-in-out;
+  }
+  
+  .toast p {
+    margin: 0;
+  }
+  
+  .toast button {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .toast.success {
+    background-color: #4caf50; /* Green for success */
+  }
+  
+  .toast.error {
+    background-color: #f44336; /* Red for error */
+  }
+  
+  @keyframes fadeInOut {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    50% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+  }
+  
+// Code injected by SID 
+
+
+
+
+
+
+
 
 .login-input {
     box-sizing: border-box;
@@ -162,10 +238,16 @@ $gradient-radial: radial-gradient(
 
 .register-change {
     text-decoration: underline;
-    color: rgb(216, 98, 98);
-
-    &:hover {
-        color: rgb(138, 42, 42);
+    color:  rgb(110, 181, 4);
+    transition: all 0.3s ease-in-out;
+   
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    &:hover
+        {
+        color:greenyellow ;
         text-decoration: underline;
         cursor: pointer;
     }
