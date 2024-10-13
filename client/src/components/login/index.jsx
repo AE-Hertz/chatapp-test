@@ -136,8 +136,8 @@ const Login = ({ setUser, setSecret }) => {
             </button>
           )}
         </div>
-      </div>
 
+      </div>
       {/* Render Toast if there is a message */}
       {toast && (
         <Toast

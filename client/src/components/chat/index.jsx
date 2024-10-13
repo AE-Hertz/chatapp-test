@@ -1,8 +1,8 @@
 import React from "react";
 import {
-    useMultiChatLogic,
-    MultiChatSocket,
-    MultiChatWindow,
+  useMultiChatLogic,
+  MultiChatSocket,
+  MultiChatWindow,
 } from "react-chat-engine-advanced";
 import Header from "@/components/customHeader";
 import StandardMessageForm from "@/components/customMessageForms/StandardMessageForm";
@@ -10,47 +10,56 @@ import Ai from "@/components/customMessageForms/Ai";
 import AiCode from "@/components/customMessageForms/AiCode";
 import AiAssist from "@/components/customMessageForms/AiAssist";
 
-const Chat = ({ user, secret }) => {
-    const chatProps = useMultiChatLogic(
-        import.meta.env.VITE_PROJECT_ID,
-        user,
-        secret
-    );
+import peaceGif from "../../assets/peace.webp";
 
-    return (
-        <div style={{ flexBasis: "100%" }}>
-            <MultiChatSocket {...chatProps} />
-            <MultiChatWindow
-                {...chatProps}
-                style={{ height: "100vh" }}
-                renderChatHeader={(chat) => <Header chat={chat} />}
-                renderMessageForm={(props) => {
-                    if (chatProps.chat?.title.startsWith("AiChat_")) {
-                        return <Ai props={props} activeChat={chatProps.chat} />;
-                    }
-                    if (chatProps.chat?.title.startsWith("AiCode_")) {
-                        return (
-                            <AiCode props={props} activeChat={chatProps.chat} />
-                        );
-                    }
-                    if (chatProps.chat?.title.startsWith("AiAssist_")) {
-                        return (
-                            <AiAssist
-                                props={props}
-                                activeChat={chatProps.chat}
-                            />
-                        );
-                    }
-                    return (
-                        <StandardMessageForm
-                            props={props}
-                            activeChat={chatProps.chat}
-                        />
-                    );
-                }}
-            />
-        </div>
-    );
+// Custom Hello Gif Injector
+function injectImageSrc(imageSrc) {
+  // Select the image element by class name
+  const imageElement = document.querySelector(".ce-ice-breaker-gif");
+
+  // Check if the image element exists
+  if (imageElement) {
+    // Set the src attribute of the image
+    imageElement.src = imageSrc;
+  } else {
+    console.error("Image element with class 'ce-ice-breaker-gif' not found.");
+  }
+}
+
+const Chat = ({ user, secret }) => {
+  const chatProps = useMultiChatLogic(
+    import.meta.env.VITE_PROJECT_ID,
+    user,
+    secret
+  );
+
+  injectImageSrc(peaceGif);
+
+  return (
+    <div style={{ flexBasis: "100%" }}>
+      <MultiChatSocket {...chatProps} />
+
+      <MultiChatWindow
+        {...chatProps}
+        style={{ height: "100vh" }}
+        renderChatHeader={(chat) => <Header chat={chat} />}
+        renderMessageForm={(props) => {
+          if (chatProps.chat?.title.startsWith("AiChat_")) {
+            return <Ai props={props} activeChat={chatProps.chat} />;
+          }
+          if (chatProps.chat?.title.startsWith("AiCode_")) {
+            return <AiCode props={props} activeChat={chatProps.chat} />;
+          }
+          if (chatProps.chat?.title.startsWith("AiAssist_")) {
+            return <AiAssist props={props} activeChat={chatProps.chat} />;
+          }
+          return (
+            <StandardMessageForm props={props} activeChat={chatProps.chat} />
+          );
+        }}
+      />
+    </div>
+  );
 };
 
 export default Chat;
