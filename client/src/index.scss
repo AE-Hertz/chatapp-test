@@ -88,6 +88,37 @@ $gradient-radial: radial-gradient(
     align-items: center;
 }
 
+// Code added by Sid
+// Eye Icon 
+.password-input-container {
+    position: relative;
+    width: 100%;
+  }
+  
+  .login-input {
+    width: 100%;
+    padding-right: 40px; /* Add padding to the right to accommodate the icon */
+  }
+  
+  .icon-container {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+  }
+  
+  .eye-icon {
+    width: 20px;
+    height: 20px;
+    color: #555;
+  }
+  
+// Code added by Sid
+
+
+
+
 @keyframes gradient-animation {
     0% {
         background-position: center;

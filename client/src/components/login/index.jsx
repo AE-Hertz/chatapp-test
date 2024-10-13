@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { usePostLoginMutation, usePostSignUpMutation } from "@/state/api";
+import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/outline";
 
 // Custom Toast Component
 const Toast = ({ message, type, onClose }) => {
@@ -20,6 +21,7 @@ const Login = ({ setUser, setSecret }) => {
   const [isRegister, setIsRegister] = useState(false);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false); // State for password visibility
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
   const [toast, setToast] = useState(null); // State for managing toast
@@ -116,13 +118,24 @@ const Login = ({ setUser, setSecret }) => {
             onChange={handleInputChange(setUsername, "username")}
           />
           {errors.username && <p className="error">{errors.username}</p>}
-          <input
-            className="login-input"
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={handleInputChange(setPassword, "password")}
-          />
+          
+          {/* Password input field with eye icon inside */}
+          <div className="password-input-container">
+            <input
+              className="login-input"
+              type={showPassword ? "text" : "password"} // Toggle between text and password
+              placeholder="Password"
+              value={password}
+              onChange={handleInputChange(setPassword, "password")}
+            />
+            <span className="icon-container" onClick={() => setShowPassword(!showPassword)}>
+              {showPassword ? (
+                <EyeSlashIcon className="eye-icon" /> // Toggle icons
+              ) : (
+                <EyeIcon className="eye-icon" />
+              )}
+            </span>
+          </div>
           {errors.password && <p className="error">{errors.password}</p>}
         </div>
         <div className="login-actions">
@@ -136,7 +149,6 @@ const Login = ({ setUser, setSecret }) => {
             </button>
           )}
         </div>
-
       </div>
       {/* Render Toast if there is a message */}
       {toast && (
