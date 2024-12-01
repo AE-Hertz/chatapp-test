@@ -10,7 +10,9 @@ import Ai from "@/components/customMessageForms/Ai";
 import AiCode from "@/components/customMessageForms/AiCode";
 import AiAssist from "@/components/customMessageForms/AiAssist";
 
-import peaceGif from "../../assets/peace.webp";
+
+import peaceGif from "../../assets/welcome.gif";
+
 
 // Custom Hello Gif Injector
 function injectImageSrc(imageSrc) {
