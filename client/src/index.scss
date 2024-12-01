@@ -814,3 +814,162 @@ font-size: 12px;
 ::-webkit-scrollbar-track:hover {
     background: $primary-700;
 }
+
+
+.widget-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+  
+    .widget-toggle {
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  
+      &:hover {
+        background: #0056b3;
+        transform: scale(1.05);
+      }
+  
+      svg {
+        width: 24px;
+        height: 24px;
+      }
+    }
+  
+    .widget-card {
+      position: fixed;
+      bottom: 80px;
+      right: 20px;
+      width: 320px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+      padding: 16px;
+  
+      .widget-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 16px;
+  
+        h3 {
+          margin: 0;
+          font-size: 18px;
+          font-weight: 500;
+        }
+  
+        .close-button {
+          background: transparent;
+          border: none;
+          cursor: pointer;
+          padding: 4px;
+          color: #666;
+  
+          &:hover {
+            color: #333;
+          }
+  
+          svg {
+            width: 20px;
+            height: 20px;
+          }
+        }
+      }
+  
+      .widget-content {
+        .input-group {
+          margin-bottom: 16px;
+  
+          input {
+            width: 100%;
+            padding: 8px 2px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+  
+            &:focus {
+              outline: none;
+              border-color: #007bff;
+              box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.1);
+            }
+  
+            &:disabled {
+              background: #f5f5f5;
+            }
+          }
+        }
+  
+        .generate-button {
+          width: 100%;
+          background: #007bff;
+          color: white;
+          border: none;
+          border-radius: 4px;
+          padding: 10px;
+          font-size: 14px;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 8px;
+  
+          &:hover:not(:disabled) {
+            background: #0056b3;
+          }
+  
+          &:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+          }
+  
+          .spinner {
+            animation: spin 1s linear infinite;
+          }
+        }
+  
+        .error-message {
+          color: #dc3545;
+          font-size: 14px;
+          margin-top: 8px;
+        }
+  
+        .generated-image {
+          margin-top: 16px;
+  
+          img {
+            width: 100%;
+            border-radius: 4px;
+          }
+  
+          .download-instruction {
+            font-size: 10px;
+            text-align: center;
+            color: #555;
+            margin-top: 8px;
+            font-weight: 100;
+          }
+        }
+      }
+    }
+  }
+  
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
