@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
     BrowserRouter,
     Route,
@@ -9,7 +9,10 @@ import {
 import Chat from "@/components/chat";
 import Login from "@/components/login";
 
+
+
 function App() {
+
     const [user, setUser] = useState(null);
     const [secret, setSecret] = useState(null);
     const isAuth = Boolean(user) && Boolean(secret);
