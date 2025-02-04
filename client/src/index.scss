@@ -196,10 +196,26 @@ font-size: 12px;
 
 
 // Toast CSS
+.toast-container {
+    position: fixed;
+    top: 10px; /* Distance from the top */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9999; /* Ensure it appears above other elements */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    pointer-events: none; /* Prevent blocking clicks */
+  
 .toast {
     position: fixed;
-    bottom: 20px;
-    right: 20px;
+    // bottom: 20px;
+    top:10px;
+    left: 50%;
+    // right: 20px;
+    transform: translate(-50%);
+    z-index: 9999;
     padding: 15px;
     background-color: #1c1c1c;
     color: rgb(255, 255, 255);
@@ -208,7 +224,9 @@ font-size: 12px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    animation: fadeInOut 0.5s ease-in-out;
+    text-align: center;
+    max-width: 400px;
+    animation: fadeInOut 0.5s ease-in;
   }
   
   .toast p {
@@ -234,17 +252,14 @@ font-size: 12px;
   @keyframes fadeInOut {
     0% {
       opacity: 0;
-      transform: translateY(20px);
-    }
-    50% {
-      opacity: 1;
-      transform: translateY(0);
+      transform: translate(-50%, -20px); /* Move up */
     }
     100% {
-      opacity: 0;
-      transform: translateY(-20px);
+      opacity: 1;
+      transform: translate(-50%, 0px); /* Move to final position */
     }
   }
+}
   
 // Code injected by SID 
 
