@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import Chat from "@/components/chat";
 import Login from "@/components/login";
+import ImageWidget from "./components/pollinations/ImageWidget";
 
 
 
@@ -44,6 +45,7 @@ function App() {
                         />
                     </Routes>
                 </BrowserRouter>
+                <ImageWidget />
             </div>
         </>
     );
