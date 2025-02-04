@@ -85,7 +85,7 @@ const Login = ({ setUser, setSecret }) => {
 
   useEffect(() => {
     setTimeout(() => {
-      showToast("⚠ Update:\nIts sad to say chatengine.io has been shut-down,\nthats been said it was our skeleton of this project,\nso this project doesn't work anymore.\n\n ITS HERE JUST TO KEEP THE RESPECT OF\n MY TIME & EFFORTS", "multiline");
+      showToast("⚠ Update:\nIts sad to say chatengine.io has been shut-down,\nthats been said it was our skeleton of this project,\nso this project doesn't work anymore,\n although good thing is you can still try little blue icon at bottom right :)\n\n ITS HERE JUST TO KEEP THE RESPECT OF\n MY TIME & EFFORTS", "multiline");
     }, 5000);
   }, []);
 
