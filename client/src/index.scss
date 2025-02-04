@@ -196,8 +196,9 @@ $gradient-radial: radial-gradient(
     bottom: 20px;
     right: 20px;
     padding: 15px;
-    background-color: #333;
-    color: white;
+    background-color: #1c1c1c;
+    color: rgb(255, 255, 255);
+    border: 1px solid lightgreen;
     border-radius: 5px;
     display: flex;
     align-items: center;
