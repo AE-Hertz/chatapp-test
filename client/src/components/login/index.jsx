@@ -5,16 +5,19 @@ import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/outline";
 // Custom Toast Component (Persistent, Multiline)
 const Toast = ({ message, type, onClose }) => {
   return (
-    <div className={`toast ${type}`}>
-      <div className="toast-content">
-        {message.split("\n").map((line, index) =>
-          line === "" ? <br key={index} /> : <p key={index}>{line}</p>
-        )}
+    <div className={`toast-container`}>
+      <div className={`toast ${type}`}>
+        <div className="toast-content">
+          {message.split("\n").map((line, index) =>
+            line === "" ? <br key={index} /> : <p key={index}>{line}</p>
+          )}
+        </div>
+        <button className="close-btn" onClick={onClose}>✖</button>
       </div>
-      <button className="close-btn" onClick={onClose}>✖</button>
     </div>
   );
 };
+
 
 
 const Login = ({ setUser, setSecret }) => {
@@ -83,7 +86,7 @@ const Login = ({ setUser, setSecret }) => {
   useEffect(() => {
     setTimeout(() => {
       showToast("⚠ Update:\nIts sad to say chatengine.io has been shut-down,\nthats been said it was our skeleton of this project,\nso this project doesn't work anymore.\n\n ITS HERE JUST TO KEEP THE RESPECT OF\n MY TIME & EFFORTS", "multiline");
-    }, 1000);
+    }, 5000);
   }, []);
 
   function ClearInput() {
@@ -154,6 +157,7 @@ const Login = ({ setUser, setSecret }) => {
 
       {toast && (
         <Toast
+          position="top-center"
           message={toast.message}
           type={toast.type}
           onClose={() => setToast(null)}
